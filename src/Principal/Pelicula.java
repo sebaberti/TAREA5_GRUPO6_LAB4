@@ -1,0 +1,49 @@
+package Principal;
+
+public class Pelicula {
+	private static int contador = 0;
+	private int id;
+	private String nombre;
+	private Categoria categoria;
+
+	public Pelicula() {
+		id = ++contador;
+		nombre = "";
+		categoria = null;
+	}
+	
+	public Pelicula(String nombre, Categoria categoria) {
+		this.id = ++contador;
+		this.nombre = nombre;
+		this.categoria = categoria;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
+	@Override
+    public String toString() {
+        return  id + " - " + nombre + " - " + categoria;
+    } 
+}
