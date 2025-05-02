@@ -2,10 +2,17 @@ package Principal;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import dominio.Categoria;
+import dominio.Pelicula;
 import dominio.TipoCategoria;
 import javax.swing.JComboBox;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class PanelAgregarPeliculas extends JPanel {
@@ -18,6 +25,8 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JLabel lblIDPelicula;
 	private JComboBox<Categoria> cbCategorias;
 	private JButton btnAceptar;
+	
+	private DefaultListModel<Pelicula> listModel= new DefaultListModel<Pelicula>();
 
 	public PanelAgregarPeliculas() {
 		setLayout(null);
@@ -45,6 +54,7 @@ public class PanelAgregarPeliculas extends JPanel {
 		txtNombre.setBounds(143, 60, 179, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
+		
 
 		cbCategorias = new JComboBox<Categoria>();
 		cargarCBxCategorias();
@@ -54,6 +64,25 @@ public class PanelAgregarPeliculas extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(150, 146, 89, 23);
 		add(btnAceptar);
+		
+
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if(txtNombre.getText() != null && !txtNombre.getText().isEmpty() && cbCategorias.getSelectedIndex() != 0 )  {
+					Pelicula pelicula = new Pelicula();				
+					pelicula.setNombre(txtNombre.getText());
+					pelicula.setCategoria( ((Categoria)cbCategorias.getSelectedItem()));
+					
+					listModel.addElement(pelicula);
+					
+					//FALTA COMPLETAR
+
+					}else {
+						JOptionPane.showMessageDialog(null, "Error, revise completar los campos");
+					}
+			}
+		});
 	}
 
 	private void cargarCBxCategorias() {
@@ -62,5 +91,18 @@ public class PanelAgregarPeliculas extends JPanel {
 		cbCategorias.addItem(new Categoria(TipoCategoria.ACCION));
 		cbCategorias.addItem(new Categoria(TipoCategoria.SUSPENSO));
 		cbCategorias.addItem(new Categoria(TipoCategoria.ROMANTICA));
+	}
+	
+	public void setDefaultListModel(DefaultListModel<Pelicula> listModel)
+	{
+		this.listModel = listModel;
+	}
+
+	public DefaultListModel<Pelicula> getListModel() {
+		return listModel;
+	}
+
+	public void setListModel(DefaultListModel<Pelicula> listModel) {
+		this.listModel = listModel;
 	}
 }

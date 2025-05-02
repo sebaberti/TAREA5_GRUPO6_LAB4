@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 
 public abstract class Ventana extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	private Ventana padre = null;
 	private Ventana ventanaHija;
 	private boolean isVentanaHijaActiva = false;

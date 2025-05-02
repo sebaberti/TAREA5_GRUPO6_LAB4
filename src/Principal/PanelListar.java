@@ -11,8 +11,8 @@ public class PanelListar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblTitulo;
-	private JList<Pelicula> list;
-	private DefaultListModel<Pelicula> listModal;
+	private JList<Pelicula> listPeliculas;
+	private DefaultListModel<Pelicula> listModel;
 
 	public PanelListar() {
 		setLayout(null);
@@ -23,11 +23,17 @@ public class PanelListar extends JPanel {
 		lblTitulo.setBounds(32, 24, 134, 22);
 		add(lblTitulo);
 		
-		listModal = new DefaultListModel<Pelicula>();
+		listModel = new DefaultListModel<Pelicula>();
 		
-		list = new JList<Pelicula>();
-		list.setBounds(32, 57, 318, 173);
-		add(list);
+		listPeliculas = new JList<Pelicula>();
+		listPeliculas.setBounds(32, 57, 318, 173);
+		add(listPeliculas);
 		
+	}
+	
+	public void setDefaultListModel(DefaultListModel<Pelicula> listModel)
+	{
+		this.listModel = listModel;
+		listPeliculas.setModel(this.listModel);
 	}
 }

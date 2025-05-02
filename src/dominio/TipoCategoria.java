@@ -1,6 +1,5 @@
 package dominio;
 
-import java.util.ArrayList;
 
 public abstract class TipoCategoria {
 	public final static String SELECCIONAR_OPCION = "Seleccione una opcion";
