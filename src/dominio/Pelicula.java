@@ -1,6 +1,6 @@
-package Principal;
+package dominio;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula> {
 	private static int contador = 0;
 	private int id;
 	private String nombre;
@@ -21,11 +21,11 @@ public class Pelicula {
 	public int getId() {
 		return id;
 	}
-
+/*
 	public void setId(int id) {
 		this.id = id;
 	}
-
+*/
 	public String getNombre() {
 		return nombre;
 	}
@@ -45,5 +45,10 @@ public class Pelicula {
 	@Override
     public String toString() {
         return  id + " - " + nombre + " - " + categoria;
-    } 
+    }
+
+	@Override
+	public int compareTo(Pelicula o) {
+		return this.nombre.compareToIgnoreCase(o.nombre);
+	} 
 }

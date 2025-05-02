@@ -1,4 +1,4 @@
-package Principal;
+package dominio;
 
 public class Categoria implements Comparable<Categoria>{
 	private static int contador = 0;
@@ -28,7 +28,7 @@ public class Categoria implements Comparable<Categoria>{
     
 	@Override
     public String toString() {
-        return  id + "-" + nombre;
+        return  id + "- " + nombre;
     }
 	
 	public int compareTo(Categoria otra) {
