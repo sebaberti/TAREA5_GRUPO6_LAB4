@@ -11,7 +11,7 @@ public class Pelicula implements Comparable<Pelicula> {
 		nombre = "";
 		categoria = null;
 	}
-	
+
 	public Pelicula(String nombre, Categoria categoria) {
 		this.id = ++contador;
 		this.nombre = nombre;
@@ -21,11 +21,7 @@ public class Pelicula implements Comparable<Pelicula> {
 	public int getId() {
 		return id;
 	}
-/*
-	public void setId(int id) {
-		this.id = id;
-	}
-*/
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,14 +37,14 @@ public class Pelicula implements Comparable<Pelicula> {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 	@Override
-    public String toString() {
-        return  id + " - " + nombre + " - " + categoria;
-    }
+	public String toString() {
+		return id + " - " + nombre + " - " + categoria;
+	}
 
 	@Override
 	public int compareTo(Pelicula o) {
 		return this.nombre.compareToIgnoreCase(o.nombre);
-	} 
+	}
 }

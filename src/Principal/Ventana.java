@@ -4,17 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-
 
 public abstract class Ventana extends JFrame {
 
@@ -33,10 +29,10 @@ public abstract class Ventana extends JFrame {
 	public Ventana(Ventana padre, int bounds[], String titulo) {
 		setResizable(false);
 		this.setPadre(padre);
-		
-		if(padre!=null)
-		padre.setIsVentanaHijaActiva(true);
-		
+
+		if (padre != null)
+			padre.setIsVentanaHijaActiva(true);
+
 		setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
 		setTitle(titulo);
 		getContentPane().setLayout(null);
@@ -80,8 +76,6 @@ public abstract class Ventana extends JFrame {
 		panel.setLayout(null);
 	}
 
-	
-
 	public void setearTxt(JTextField txt, int[] bounds) {
 		addEventoKeyTyped(txt);
 		txt.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 12));
@@ -100,9 +94,9 @@ public abstract class Ventana extends JFrame {
 		getContentPane().add(txt);
 		panel.add(txt);
 	}
-	
+
 	public void setMenu(JMenuBar menuBar) {
-	    setJMenuBar(menuBar); // Asigna el menú a la ventana actual
+		setJMenuBar(menuBar); // Asigna el menú a la ventana actual
 	}
 
 	public void addEventoKeyTyped(JTextField txt) {
@@ -113,8 +107,6 @@ public abstract class Ventana extends JFrame {
 			}
 		});
 	}
-	
-	
 
 	public Ventana getPadre() {
 		return padre;
@@ -145,10 +137,8 @@ public abstract class Ventana extends JFrame {
 		label.setVisible(true);
 	}
 
-
-
 	public void cambiarVisibilidad(boolean estado) {
 		setVisible(estado);
 	}
-	
+
 }

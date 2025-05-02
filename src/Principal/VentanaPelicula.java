@@ -11,52 +11,56 @@ import java.awt.BorderLayout;
 
 public class VentanaPelicula extends Ventana {
 
-            private static final long serialVersionUID = 1L;
-            private JMenuBar menuBar;
-            private JMenu menuPeliculas;
-            private JMenuItem menuItemAgregar;
-            private JMenuItem menuItemListar;
-            private JPanel contentPane;
+	private static final long serialVersionUID = 1L;
+	private JMenuBar menuBar;
+	private JMenu menuPeliculas;
+	private JMenuItem menuItemAgregar;
+	private JMenuItem menuItemListar;
+	private JPanel contentPane;
 
-            public VentanaPelicula() {
-                super(new int[]{100, 100, 400, 300}, "Películas");
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                
-                contentPane = new JPanel();
-                contentPane.setBounds(0, 0, 386, 241);
-                getContentPane().add(contentPane);
-                contentPane.setLayout(new BorderLayout(0, 0));
-              
-                menuBar = new JMenuBar();
-                menuBar.setBounds(0, -22, 386, 22);    
+	public VentanaPelicula() {
+		super(new int[] { 100, 100, 400, 300 }, "Películas");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                menuPeliculas = new JMenu("Películas");
-                menuBar.add(menuPeliculas);
+		contentPane = new JPanel();
+		contentPane.setBounds(0, 0, 386, 241);
+		getContentPane().add(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 
-                menuItemAgregar = new JMenuItem("Agregar");
-                menuItemAgregar.addActionListener(new ActionListener() {
-                	public void actionPerformed(ActionEvent e) {
-                		
-                		contentPane.removeAll();
-                		PanelAgregarPeliculas panel= new PanelAgregarPeliculas();
-                		contentPane.add(panel);
-                		contentPane.repaint();
-                		contentPane.revalidate();
-                		
-                	}
-                });
-                menuPeliculas.add(menuItemAgregar);
+		menuBar = new JMenuBar();
+		menuBar.setBounds(0, -22, 386, 22);
 
-                menuItemListar = new JMenuItem("Listar");
-                menuPeliculas.add(menuItemListar);
-               
-                setMenu(menuBar);
-                getContentPane().setLayout(null);
-                
-                
-            }        
-     }
+		menuPeliculas = new JMenu("Películas");
+		menuBar.add(menuPeliculas);
 
+		menuItemAgregar = new JMenuItem("Agregar");
+		menuItemAgregar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelAgregarPeliculas()));
+		menuPeliculas.add(menuItemAgregar);
 
+		menuItemListar = new JMenuItem("Listar");
+		menuItemListar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelListar()));
+		menuPeliculas.add(menuItemListar);
 
+		setMenu(menuBar);
+		getContentPane().setLayout(null);
+	}
+}
 
+class AccionarMenuItem implements ActionListener {
+	private JPanel panel;
+	private JPanel contenedorPrincipal;
+
+	AccionarMenuItem(JPanel contenedorPrincipal, JPanel panel) {
+		this.panel = panel;
+		this.contenedorPrincipal = contenedorPrincipal;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		contenedorPrincipal.removeAll();
+		contenedorPrincipal.add(panel);
+		contenedorPrincipal.repaint();
+		contenedorPrincipal.revalidate();
+	}
+
+}
