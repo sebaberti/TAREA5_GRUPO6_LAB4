@@ -3,9 +3,8 @@ package Principal;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import dominio.Categoria;
-
+import dominio.TipoCategoria;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
@@ -18,42 +17,58 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JLabel lblGenero;
 	private JLabel lblIDPelicula;
 	private JComboBox<Categoria> cbCategorias;
+//	private JComboBox<String> cbCategorias;
 	private JButton btnAceptar;
-	
+
 	public PanelAgregarPeliculas() {
 		setLayout(null);
 		dibujarControles();
 	}
-	
-	private void dibujarControles(){
+
+	private void dibujarControles() {
 		lblID = new JLabel("ID");
 		lblID.setBounds(65, 24, 81, 20);
 		add(lblID);
-		
+
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(65, 63, 49, 14);
 		add(lblNombre);
-		
+
 		lblGenero = new JLabel("Genero");
 		lblGenero.setBounds(65, 101, 49, 14);
 		add(lblGenero);
-		
+
 		lblIDPelicula = new JLabel("");
 		lblIDPelicula.setBounds(190, 52, 49, 14);
 		add(lblIDPelicula);
-		
+
 		txtNombre = new JTextField();
-		txtNombre.setBounds(143, 60, 96, 20);
+		txtNombre.setBounds(143, 60, 179, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
-		
+
 		cbCategorias = new JComboBox<Categoria>();
-		cbCategorias.setBounds(143, 97, 96, 22);
+//		cbCategorias = new JComboBox<String>();
+		cargarCBxCategorias();
+		cbCategorias.setBounds(143, 97, 179, 22);
 		add(cbCategorias);
-		
+
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(150, 146, 89, 23);
 		add(btnAceptar);
-	
 	}
+
+	private void cargarCBxCategorias() {
+		cbCategorias.addItem(new Categoria(TipoCategoria.SELECCIONAR_OPCION));
+		cbCategorias.addItem(new Categoria(TipoCategoria.TERROR));
+		cbCategorias.addItem(new Categoria(TipoCategoria.ACCION));
+		cbCategorias.addItem(new Categoria(TipoCategoria.SUSPENSO));
+		cbCategorias.addItem(new Categoria(TipoCategoria.ROMANTICA));
+	}
+
+//	private void cargarCBxCategorias() {
+//		for (String categoria : TipoCategoria.getCategorias()) {
+//			cbCategorias.addItem(categoria);
+//		}
+//	}
 }
