@@ -8,15 +8,4 @@ public abstract class TipoCategoria {
 	public final static String ACCION = "Accion";
 	public final static String SUSPENSO = "Suspenso";
 	public final static String ROMANTICA = "Romantica";
-
-	public static ArrayList<String> getCategorias() {
-		return new ArrayList<String>() {
-			{
-				add(TERROR);
-				add(ACCION);
-				add(SUSPENSO);
-				add(ROMANTICA);
-			}
-		};
-	}
 }
