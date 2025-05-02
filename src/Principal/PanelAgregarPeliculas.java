@@ -17,7 +17,6 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JLabel lblGenero;
 	private JLabel lblIDPelicula;
 	private JComboBox<Categoria> cbCategorias;
-//	private JComboBox<String> cbCategorias;
 	private JButton btnAceptar;
 
 	public PanelAgregarPeliculas() {
@@ -48,7 +47,6 @@ public class PanelAgregarPeliculas extends JPanel {
 		txtNombre.setColumns(10);
 
 		cbCategorias = new JComboBox<Categoria>();
-//		cbCategorias = new JComboBox<String>();
 		cargarCBxCategorias();
 		cbCategorias.setBounds(143, 97, 179, 22);
 		add(cbCategorias);
@@ -65,10 +63,4 @@ public class PanelAgregarPeliculas extends JPanel {
 		cbCategorias.addItem(new Categoria(TipoCategoria.SUSPENSO));
 		cbCategorias.addItem(new Categoria(TipoCategoria.ROMANTICA));
 	}
-
-//	private void cargarCBxCategorias() {
-//		for (String categoria : TipoCategoria.getCategorias()) {
-//			cbCategorias.addItem(categoria);
-//		}
-//	}
 }
