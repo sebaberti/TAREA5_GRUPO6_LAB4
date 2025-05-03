@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.Font;
 
 public class PanelAgregarPeliculas extends JPanel {
 
@@ -25,8 +26,8 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JLabel lblIDPelicula;
 	private JComboBox<Categoria> cbCategorias;
 	private JButton btnAceptar;
-	
-	private DefaultListModel<Pelicula> listModel= new DefaultListModel<Pelicula>();
+
+	private DefaultListModel<Pelicula> listModel = new DefaultListModel<Pelicula>();
 
 	public PanelAgregarPeliculas() {
 		setLayout(null);
@@ -47,14 +48,15 @@ public class PanelAgregarPeliculas extends JPanel {
 		add(lblGenero);
 
 		lblIDPelicula = new JLabel("");
-		lblIDPelicula.setBounds(190, 52, 49, 14);
+		lblIDPelicula.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblIDPelicula.setText(String.valueOf(Pelicula.getProximoID()));
+		lblIDPelicula.setBounds(145, 27, 17, 14);
 		add(lblIDPelicula);
 
 		txtNombre = new JTextField();
 		txtNombre.setBounds(143, 60, 179, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
-		
 
 		cbCategorias = new JComboBox<Categoria>();
 		cargarCBxCategorias();
@@ -64,23 +66,25 @@ public class PanelAgregarPeliculas extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(150, 146, 89, 23);
 		add(btnAceptar);
-		
 
 		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				if(txtNombre.getText() != null && !txtNombre.getText().isEmpty() && cbCategorias.getSelectedIndex() != 0 )  {
-					Pelicula pelicula = new Pelicula();				
+			public void actionPerformed(ActionEvent e) {
+				if (txtNombre.getText() != null && !txtNombre.getText().isEmpty()
+						&& cbCategorias.getSelectedIndex() != 0) {
+					Pelicula pelicula = new Pelicula();
 					pelicula.setNombre(txtNombre.getText());
-					pelicula.setCategoria( ((Categoria)cbCategorias.getSelectedItem()));
-					
+					pelicula.setCategoria(((Categoria) cbCategorias.getSelectedItem()));
+
 					listModel.addElement(pelicula);
 					
-					//FALTA COMPLETAR
+					JOptionPane.showMessageDialog(null, "La pelicula se agrego correctamente");
 
-					}else {
-						JOptionPane.showMessageDialog(null, "Error, revise completar los campos");
-					}
+					lblIDPelicula.setText(String.valueOf(Pelicula.getProximoID()));
+					txtNombre.setText("");
+					cbCategorias.setSelectedIndex(0);
+				} else {
+					JOptionPane.showMessageDialog(null, "Error, revise completar los campos");
+				}
 			}
 		});
 	}
@@ -92,9 +96,8 @@ public class PanelAgregarPeliculas extends JPanel {
 		cbCategorias.addItem(new Categoria(TipoCategoria.SUSPENSO));
 		cbCategorias.addItem(new Categoria(TipoCategoria.ROMANTICA));
 	}
-	
-	public void setDefaultListModel(DefaultListModel<Pelicula> listModel)
-	{
+
+	public void setDefaultListModel(DefaultListModel<Pelicula> listModel) {
 		this.listModel = listModel;
 	}
 
