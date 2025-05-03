@@ -43,6 +43,10 @@ public class Pelicula implements Comparable<Pelicula> {
 		return id + " - " + nombre + " - " + categoria;
 	}
 
+	public static int getProximoID() {
+		return contador + 1;
+	}
+
 	@Override
 	public int compareTo(Pelicula o) {
 		return this.nombre.compareToIgnoreCase(o.nombre);
