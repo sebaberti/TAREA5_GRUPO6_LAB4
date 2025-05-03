@@ -1,12 +1,11 @@
 package dominio;
 
-public class Categoria implements Comparable<Categoria> {
+public class Categoria {
 	private static int contador = 0;
 	private int id;
 	private String nombre;
 
 	public Categoria(String nombre) {
-		super();
 		this.id = ++contador;
 		this.nombre = nombre;
 	}
@@ -26,9 +25,5 @@ public class Categoria implements Comparable<Categoria> {
 	@Override
 	public String toString() {
 		return "- " + nombre;
-	}
-
-	public int compareTo(Categoria otra) {
-		return this.nombre.compareToIgnoreCase(otra.nombre);
 	}
 }
