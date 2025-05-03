@@ -21,6 +21,7 @@ public class VentanaPelicula extends Ventana {
 	public VentanaPelicula() {
 		super(new int[] { 100, 100, 400, 300 }, "Películas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
 		contentPane.setBounds(0, 0, 386, 241);
