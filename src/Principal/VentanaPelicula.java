@@ -10,6 +10,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 
@@ -40,7 +43,8 @@ public class VentanaPelicula extends Ventana {
 		menuBar.add(menuPeliculas);
 
 		menuItemAgregar = new JMenuItem("Agregar");
-		menuItemAgregar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelAgregarPeliculas(listModelPeliculas)));
+		menuItemAgregar.addActionListener(
+				new AccionarMenuItem(this.contentPane, new PanelAgregarPeliculas(listModelPeliculas)));
 		menuPeliculas.add(menuItemAgregar);
 
 		menuItemListar = new JMenuItem("Listar");

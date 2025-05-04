@@ -11,6 +11,9 @@ import javax.swing.JComboBox;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -78,6 +81,8 @@ public class PanelAgregarPeliculas extends JPanel {
 
 					listModel.addElement(pelicula);
 
+					ordenarLista(listModel); //agrego la pelicula y ya la ordeno en la lista
+					
 					JOptionPane.showMessageDialog(null, "La pelicula se agrego correctamente");
 
 					lblIDPelicula.setText(String.valueOf(Pelicula.getProximoID()));
@@ -86,7 +91,7 @@ public class PanelAgregarPeliculas extends JPanel {
 
 					System.out.println(listModel.getSize());
 				} else {
-					JOptionPane.showMessageDialog(null, "Error, revise completar los campos");
+					JOptionPane.showMessageDialog(null, "Error, revise completar ambos campos");
 				}
 			}
 		});
@@ -110,5 +115,25 @@ public class PanelAgregarPeliculas extends JPanel {
 
 	public void setListModel(DefaultListModel<Pelicula> listModel) {
 		this.listModel = listModel;
+	}
+	
+	private void ordenarLista(DefaultListModel<Pelicula> listModel) {
+		List<Pelicula> listaOrdenada = new ArrayList<>();
+		if (listModel.isEmpty())
+			return;
+		try {
+			for (int i = 0; i < listModel.size(); i++) {
+				listaOrdenada.add((Pelicula) listModel.get(i));
+			}
+
+			Collections.sort(listaOrdenada);
+
+			listModel.removeAllElements();
+			for (Pelicula val : listaOrdenada) {
+				listModel.addElement(val);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
