@@ -19,26 +19,6 @@ public class PanelListar extends JPanel {
 	private JScrollPane scrollPane;
 	
 	public PanelListar(DefaultListModel<Pelicula> listModel) {
-//		setLayout(null);
-//		setBounds(0, 0, 386, 241);
-//		
-//		lblTitulo = new JLabel("Listado películas:");
-//		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
-//		lblTitulo.setBounds(32, 24, 184, 22);
-//		add(lblTitulo);
-//		
-//		listPeliculas = new JList<Pelicula>(listModel);
-//		listPeliculas.setBounds(32, 57, 318, 173);
-//		add(listPeliculas);
-//
-//		//scroll
-//		scrollPane = new JScrollPane();
-//		scrollPane.setBounds(29, 55, 318, 173);
-//	    listPeliculas.setLayoutOrientation(JList.VERTICAL);
-//		add(scrollPane);
-//		
-		
-		
 		setLayout(null);
 		
 		lblTitulo = new JLabel("Listado películas:");
