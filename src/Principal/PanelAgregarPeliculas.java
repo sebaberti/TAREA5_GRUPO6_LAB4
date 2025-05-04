@@ -27,10 +27,11 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JComboBox<Categoria> cbCategorias;
 	private JButton btnAceptar;
 
-	private DefaultListModel<Pelicula> listModel = new DefaultListModel<Pelicula>();
+	private DefaultListModel<Pelicula> listModel;
 
-	public PanelAgregarPeliculas() {
+	public PanelAgregarPeliculas(DefaultListModel<Pelicula> listModel) {
 		setLayout(null);
+		this.listModel = listModel;
 		dibujarControles();
 	}
 
@@ -76,12 +77,14 @@ public class PanelAgregarPeliculas extends JPanel {
 					pelicula.setCategoria(((Categoria) cbCategorias.getSelectedItem()));
 
 					listModel.addElement(pelicula);
-					
+
 					JOptionPane.showMessageDialog(null, "La pelicula se agrego correctamente");
 
 					lblIDPelicula.setText(String.valueOf(Pelicula.getProximoID()));
 					txtNombre.setText("");
 					cbCategorias.setSelectedIndex(0);
+
+					System.out.println(listModel.getSize());
 				} else {
 					JOptionPane.showMessageDialog(null, "Error, revise completar los campos");
 				}

@@ -1,7 +1,11 @@
 package Principal;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import dominio.Pelicula;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -17,6 +21,7 @@ public class VentanaPelicula extends Ventana {
 	private JMenuItem menuItemAgregar;
 	private JMenuItem menuItemListar;
 	private JPanel contentPane;
+	private DefaultListModel<Pelicula> listModelPeliculas = new DefaultListModel<>();
 
 	public VentanaPelicula() {
 		super(new int[] { 100, 100, 400, 300 }, "Películas");
@@ -35,11 +40,11 @@ public class VentanaPelicula extends Ventana {
 		menuBar.add(menuPeliculas);
 
 		menuItemAgregar = new JMenuItem("Agregar");
-		menuItemAgregar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelAgregarPeliculas()));
+		menuItemAgregar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelAgregarPeliculas(listModelPeliculas)));
 		menuPeliculas.add(menuItemAgregar);
 
 		menuItemListar = new JMenuItem("Listar");
-		menuItemListar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelListar()));
+		menuItemListar.addActionListener(new AccionarMenuItem(this.contentPane, new PanelListar(listModelPeliculas)));
 		menuPeliculas.add(menuItemListar);
 
 		setMenu(menuBar);

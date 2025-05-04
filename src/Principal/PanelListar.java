@@ -14,7 +14,7 @@ public class PanelListar extends JPanel {
 	private JList<Pelicula> listPeliculas;
 	private DefaultListModel<Pelicula> listModel;
 
-	public PanelListar() {
+	public PanelListar(DefaultListModel<Pelicula> listModel) {
 		setLayout(null);
 		setBounds(0, 0, 386, 241);
 		
@@ -23,9 +23,7 @@ public class PanelListar extends JPanel {
 		lblTitulo.setBounds(32, 24, 134, 22);
 		add(lblTitulo);
 		
-		listModel = new DefaultListModel<Pelicula>();
-		
-		listPeliculas = new JList<Pelicula>();
+		listPeliculas = new JList<Pelicula>(listModel);
 		listPeliculas.setBounds(32, 57, 318, 173);
 		add(listPeliculas);
 		
