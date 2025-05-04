@@ -21,6 +21,7 @@ public class VentanaPelicula extends Ventana {
 	private JMenuItem menuItemAgregar;
 	private JMenuItem menuItemListar;
 	private JPanel contentPane;
+	
 	private DefaultListModel<Pelicula> listModelPeliculas = new DefaultListModel<>();
 
 	public VentanaPelicula() {

@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import dominio.Categoria;
 import dominio.Pelicula;
 import dominio.TipoCategoria;
+import validaciones.PeliculaDuplicadaException;
+
 import javax.swing.JComboBox;
 
 import java.awt.event.ActionEvent;
@@ -14,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -78,18 +81,24 @@ public class PanelAgregarPeliculas extends JPanel {
 					Pelicula pelicula = new Pelicula();
 					pelicula.setNombre(txtNombre.getText());
 					pelicula.setCategoria(((Categoria) cbCategorias.getSelectedItem()));
-
 					listModel.addElement(pelicula);
-
-					ordenarLista(listModel); //agrego la pelicula y ya la ordeno en la lista
 					
+					try {
+					ordenarLista(listModel); //agrego la pelicula y ya la ordeno en la lista				
 					JOptionPane.showMessageDialog(null, "La pelicula se agrego correctamente");
-
+				
+					
 					lblIDPelicula.setText(String.valueOf(Pelicula.getProximoID()));
 					txtNombre.setText("");
 					cbCategorias.setSelectedIndex(0);
 
 					System.out.println(listModel.getSize());
+					
+					}catch(PeliculaDuplicadaException pde) {
+						listModel.removeElement(pelicula);
+						JOptionPane.showMessageDialog(null, pde.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+						
+					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Error, revise completar ambos campos");
 				}
@@ -116,7 +125,7 @@ public class PanelAgregarPeliculas extends JPanel {
 	public void setListModel(DefaultListModel<Pelicula> listModel) {
 		this.listModel = listModel;
 	}
-	
+	/*
 	private void ordenarLista(DefaultListModel<Pelicula> listModel) {
 		List<Pelicula> listaOrdenada = new ArrayList<>();
 		if (listModel.isEmpty())
@@ -135,5 +144,21 @@ public class PanelAgregarPeliculas extends JPanel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	*/
+	private void ordenarLista(DefaultListModel<Pelicula> listModel) throws PeliculaDuplicadaException {
+		TreeSet<Pelicula> listaOrdenada = new TreeSet<Pelicula>();
+		if (listModel.isEmpty())
+			return;	
+			for (int i = 0; i < listModel.size(); i++) {		
+				if (!listaOrdenada.add((Pelicula) listModel.get(i))) {
+			        throw new PeliculaDuplicadaException("No se pudo agregar: La película ya se encuentra registrada.");
+			    }
+			}		
+			
+			listModel.removeAllElements();
+			for (Pelicula val : listaOrdenada) {
+				listModel.addElement(val);
+			}					
 	}
 }
