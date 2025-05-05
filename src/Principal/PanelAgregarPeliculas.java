@@ -87,7 +87,7 @@ public class PanelAgregarPeliculas extends JPanel {
 					ordenarLista(listModel); //agrego la pelicula y ya la ordeno en la lista				
 					JOptionPane.showMessageDialog(null, "La pelicula se agrego correctamente");
 				
-					
+					pelicula.asignarID();
 					lblIDPelicula.setText(String.valueOf(Pelicula.getProximoID()));
 					txtNombre.setText("");
 					cbCategorias.setSelectedIndex(0);

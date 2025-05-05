@@ -7,7 +7,7 @@ public class Pelicula implements Comparable<Pelicula> {
 	private Categoria categoria;
 
 	public Pelicula() {
-		id = ++contador;
+		//id = ++contador;
 		nombre = "";
 		categoria = null;
 	}
@@ -40,8 +40,12 @@ public class Pelicula implements Comparable<Pelicula> {
 
 	@Override
 	public String toString() {
-		return id + " - " + nombre + " - " + categoria;
+		return  nombre + " - " + categoria;
 	}
+	
+	public void asignarID() {
+        this.id = ++contador;
+    }
 
 	public static int getProximoID() {
 		return contador + 1;
