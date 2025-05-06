@@ -40,7 +40,7 @@ public class Pelicula implements Comparable<Pelicula> {
 
 	@Override
 	public String toString() {
-		return  nombre + " - " + categoria;
+		return nombre + " - " + categoria;
 	}
 	
 	public void asignarID() {
